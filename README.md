@@ -1,24 +1,74 @@
-# README
+#テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##usersテーブル
 
-Things you may want to cover:
+| Column             | Type   | Options     |
+| ------------------ | ------  | ----------- |
+| nickname           | string  | null: false |
+| email              | string  | null: false |
+| family_name        | string  | null: false |
+| first_name         | string  | null: false |
+| birth_year         | string  | null: false |
+| birth_month        | string  | null: false |
+| birth_day          | string  | null: false |
+| phone_number       | integer | unique:true |
 
-* Ruby version
+<!-- 
+has_many :items
+has_many :comments 
+-->
+##itemsテーブル
 
-* System dependencies
+| Column             | Type       | Options     |
+| ------------------ | ------     | ----------- |
+| name               | string     | null: false |
+| price              | integer    | null: false |
+| img                | references | null: false |
+| introduction       | text       | null: false |
+| condition          | integer    | null: false |
+| category_id        | references | null: false, foreign_key: true |
+| shipping_id        | references | null: false, foreign_key: true |
+| brand_id           | references | null: false, foreign_key: true |
 
-* Configuration
+<!-- 
+belongs_to :user
+belongs_to :category
+belongs_to :brand
+has_many :comments
+has_one :shipping 
+-->
 
-* Database creation
+##commentsテーブル
+| Column             | Type       | Options     |
+| ------------------ | ------     | ----------- |
+| commenttext        |            | null: false |
+| user_id            | references | null: false, foreign_key: true |
+| item_id            | references | null: false, foreign_key: true |
 
-* Database initialization
+<!-- 
+belongs_to :item
+belongs_to :user
+ -->
 
-* How to run the test suite
+ ##categoriesテーブル
+| Column         | Type       | Options     |
+| -------------- | ------     | ----------- |
+| name           | string | 
+| parent_id      | integer | 
 
-* Services (job queues, cache servers, search engines, etc.)
+##shippingsテーブル
 
-* Deployment instructions
+|Colunm        | Type        | Options      |
+| ------------ | ------      | --------- -- |
+|fee_burden    | boolean??   |null: false   |
+|region        | integer     |null: false   |
+|handling_time | integer     |	null: false |
 
-* ...
+<!-- belongs_to :item -->
+
+##brandテーブル
+|Colunm        | Type        | Options      |
+| ------------ | ------      | --------- -- |
+| category_id  | references  | null: false, foreign_key: true |
+| brand_id     | references  | null: false, foreign_key: true |
+| name         | string      | null: false  |
