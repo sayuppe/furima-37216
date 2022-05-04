@@ -1,6 +1,7 @@
 #テーブル設計
 
 ##usersテーブル
+<!-- ユーザーテーブル -->
 
 | Column             | Type   | Options     |
 | ------------------ | ------  | ----------- |
@@ -15,42 +16,59 @@
 
 
 has_many :items
+has_many :buy
+has_many :addressee
 
 ##itemsテーブル
+<!-- 商品テーブル -->
 
 | Column             | Type       | Options     |
 | ------------------ | ------     | ----------- |
 | name               | string     | null: false |
-| price              | integer    | null: false |
 | introduction       | text       | null: false |
+| category_id        | integer    | null: false |
 | condition_id       | integer    | null: false |
-| category_id        | integer    | null: false, foreign_key: true |
-| shipping_id        | integer    | null: false, foreign_key: true |
-| shipping_cost      | integer    | null: false, foreign_key: true |
-| shipping_days      | integer    | null: false, foreign_key: true |
-| brand_id           | integer    | null: false, foreign_key: true |
-| user_id            | integer    | null: false, foreign_key:true  |
+| shipping_cost_id   | integer    | null: false |
+| shipping_area_id   | integer    | null: false |
+| shipping_days_id   | integer    | null: false |
+| price              | integer    | null: false |
+| user               | references | null: false, foreign_key: true |
 
+
+has_many :addressee
 belongs_to :user
-belongs_to :buy
+has_one : buy
 
-##cardsテーブル
+
+
+##buyテーブル
+<!-- 購入テーブル -->
+
 | Column      | Type    | Options                        |
 | ----------- | ------  | ------------------------------ |
-| purchased_item_id     | references | null: false |
-| customer_id           | references | null: false |
+| user        | references | null: false, foreign_key: true |
+| item        | references | null: false |
+| addressee        | references | null: false |
 
-belongs_to :buy
+
+
 belongs_to :user
+belongs_to :item
+has_one :addressee
 
-##buysテーブル
+##Addresseeテーブル
+<!-- 配送先のテーブル -->
+
 | Column        | Type    | Options                       |
 | -----------   | ------  | ----------------------------- |
 | post_code     | string  | null: false |
-| prefecture    | string  | null: false |
+| prefecture_i  | string  | null: false |
 | city          | string  | null: false |
 | address       | string  | null: false |
 | building_name | string  |
 | phone_number  | string  | null: false |
+| user               | references | null: false, foreign_key: true |
 
-has_one : card
+belongs_to :user
+belongs_to :item
+belongs_to :buy
