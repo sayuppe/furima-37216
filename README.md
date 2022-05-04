@@ -16,7 +16,7 @@
 
 
 has_many :items
-has_many :buy
+has_many :buys
 
 ##itemsテーブル
 <!-- 商品テーブル -->
@@ -28,7 +28,7 @@ has_many :buy
 | category_id        | integer    | null: false |
 | condition_id       | integer    | null: false |
 | shipping_cost_id   | integer    | null: false |
-| prefecture_id 　　  | string  |   null: false |
+| prefecture_id 　   | integer  |   null: false |
 | shipping_days_id   | integer    | null: false |
 | price              | integer    | null: false |
 | user               | references | null: false, foreign_key: true |
@@ -46,13 +46,11 @@ has_one : buy
 | ----------- | ------  | ------------------------------ |
 | user        | references | null: false, foreign_key: true |
 | item        | references | null: false |
-| addressee        | references | null: false |
-
 
 
 belongs_to :user
 belongs_to :item
-has_one :addres
+has_one :address
 
 ##Addressesテーブル
 <!-- 配送先のテーブル -->
@@ -60,11 +58,11 @@ has_one :addres
 | Column        | Type    | Options                       |
 | -----------   | ------  | ----------------------------- |
 | post_code     | string  | null: false |
-| prefecture_id  | string  | null: false |
+| prefecture_id |  integer | null: false |
 | city          | string  | null: false |
 | address       | string  | null: false |
 | building_name | string  |
 | phone_number  | string  | null: false |
-| buy               | references | null: false, foreign_key: true |
+| buy           | references | null: false, foreign_key: true |
 
 belongs_to :buy
