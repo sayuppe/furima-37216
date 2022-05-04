@@ -17,7 +17,6 @@
 
 has_many :items
 has_many :buy
-has_many :addressee
 
 ##itemsテーブル
 <!-- 商品テーブル -->
@@ -29,13 +28,12 @@ has_many :addressee
 | category_id        | integer    | null: false |
 | condition_id       | integer    | null: false |
 | shipping_cost_id   | integer    | null: false |
-| shipping_area_id   | integer    | null: false |
+| prefecture_id 　　  | string  |   null: false |
 | shipping_days_id   | integer    | null: false |
 | price              | integer    | null: false |
 | user               | references | null: false, foreign_key: true |
 
 
-has_many :addressee
 belongs_to :user
 has_one : buy
 
@@ -54,21 +52,19 @@ has_one : buy
 
 belongs_to :user
 belongs_to :item
-has_one :addressee
+has_one :addres
 
-##Addresseeテーブル
+##Addressesテーブル
 <!-- 配送先のテーブル -->
 
 | Column        | Type    | Options                       |
 | -----------   | ------  | ----------------------------- |
 | post_code     | string  | null: false |
-| prefecture_i  | string  | null: false |
+| prefecture_id  | string  | null: false |
 | city          | string  | null: false |
 | address       | string  | null: false |
 | building_name | string  |
 | phone_number  | string  | null: false |
 | buy               | references | null: false, foreign_key: true |
 
-belongs_to :user
-belongs_to :item
 belongs_to :buy
