@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :items
+  has_many :buys
 
   
   # Include default devise modules. Others available are:
