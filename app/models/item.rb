@@ -14,6 +14,7 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :image
+    validates :user_id
     validates :name
     validates :introduction
     validates :category_id
@@ -26,10 +27,12 @@ class Item < ApplicationRecord
 
 
 
-    validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
-    validates :condition_id, numericality: { other_than: 1 , message: "can't be blank"}
-    validates :shipping_cost_id, numericality: { other_than: 1 , message: "can't be blank"}
-    validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
-    validates :shipping_days_id, numericality: { other_than: 1 , message: "can't be blank"}
+  with_options numericality: { other_than: 0 } do
+    validates :category_id
+    validates :prefecture_id
+    validates :condition_id
+    validates :shipping_cost_id
+    validates :shipping_days_id
+  end
   
 end
