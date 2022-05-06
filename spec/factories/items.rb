@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    association :user, factory: :user
+    association :user
 
     name { Faker::Name.name }
     introduction { Faker::Lorem.sentence }

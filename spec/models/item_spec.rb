@@ -1,7 +1,8 @@
 require 'rails_helper'
 RSpec.describe Item, type: :model do
   before do
-    @item = FactoryBot.create(:item)
+    @item = FactoryBot.build(:item)
+    # user = User.new(nickname: 'test', email: 'test@example', password: '00000a', password_confirmation: [password], family_name: '山田', first_name: '太郎', family_name_kana: 'ヤマダ', first_name_kana: 'タロウ',birth_date:'2000-01-01')
   end
 
   describe '商品の出品登録' do
@@ -37,9 +38,9 @@ RSpec.describe Item, type: :model do
 
     context '出品ができないとき' do
       it 'ユーザー登録している人でないと出品できない' do
-        @item.user_id = nil
+        @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist", "User can't be blank")
+        expect(@item.errors.full_messages).to include("User must exist")
       end
       it '１枚画像がないと出品できない' do
         @item.image = nil
