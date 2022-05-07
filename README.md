@@ -35,7 +35,7 @@ has_many :buys
 
 
 belongs_to :user
-has_one : buy
+has_one : order
 
 
 
@@ -63,6 +63,6 @@ has_one :address
 | address       | string  | null: false |
 | building_name | string  |
 | phone_number  | string  | null: false |
-| buy           | references | null: false, foreign_key: true |
+| order          | references | null: false, foreign_key: true |
 
 belongs_to :order
