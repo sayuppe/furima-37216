@@ -39,7 +39,7 @@ has_one : buy
 
 
 
-##buyテーブル
+##orderテーブル
 <!-- 購入テーブル  2co-->
 
 | Column      | Type    | Options                        |
