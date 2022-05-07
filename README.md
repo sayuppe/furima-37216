@@ -65,4 +65,4 @@ has_one :address
 | phone_number  | string  | null: false |
 | buy           | references | null: false, foreign_key: true |
 
-belongs_to :buy
+belongs_to :order
