@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def index
     @order_address = OrderAddress.new
-    # items = Item.order("created_at DESC")
+    @item = Item.find(params[:item_id])
   end
 
   def new
@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
       @order_address.save
       redirect_to root_path
     else
-     render :index
+    #  render :index
     end
   end
 
