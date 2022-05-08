@@ -7,12 +7,13 @@ class OrderAddress < ApplicationRecord
       validates :user_id
       validates :item_id
       #addressモデルのバリデーション
-      validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
+      validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'is invalid. Include hyphen(-)' }
       validates :city
       validates :address
-      validates :phone_number, format: { with: /\A0[5789]0[-]?\d{4}[-]?\d{4}\z/ }
+      validates :phone_number, format: { with: /\A[0-9]{11}\z/, message: 'is invalid' }
+      # validates :token
     end
-    validates :prefecture_id, numericality: { other_than: 1 }
+    validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
 
     def save
       order = Order.create(user_id: user_id, item_id: item_id)

@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def index
     @order_address = OrderAddress.new
-    items = Item.order("created_at DESC")
+    # items = Item.order("created_at DESC")
   end
 
   def new
