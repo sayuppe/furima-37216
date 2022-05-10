@@ -35,11 +35,11 @@ has_many :buys
 
 
 belongs_to :user
-has_one : buy
+has_one : order
 
 
 
-##buyテーブル
+##orderテーブル
 <!-- 購入テーブル  2co-->
 
 | Column      | Type    | Options                        |
@@ -63,6 +63,6 @@ has_one :address
 | address       | string  | null: false |
 | building_name | string  |
 | phone_number  | string  | null: false |
-| buy           | references | null: false, foreign_key: true |
+| order          | references | null: false, foreign_key: true |
 
-belongs_to :buy
+belongs_to :order
