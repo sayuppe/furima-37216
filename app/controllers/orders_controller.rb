@@ -5,15 +5,9 @@ class OrdersController < ApplicationController
 
   def index
     @order_address = OrderAddress.new
-    @item = Item.find(params[:item_id])
-  end
-
-  def new
-    @order_address = OrderAddress.new
   end
 
   def create
-    # binding.pry
     @order_address = OrderAddress.new(order_params)
     # @item = Item.find(params[:item_id])
     if @order_address.valid?
