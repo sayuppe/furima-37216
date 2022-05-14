@@ -2,7 +2,7 @@ require 'rails_helper'
 RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
-    # user = User.new(nickname: 'test', email: 'test@example', password: '00000a', password_confirmation: [password], family_name: '山田', first_name: '太郎', family_name_kana: 'ヤマダ', first_name_kana: 'タロウ',birth_date:'2000-01-01')
+    
   end
 
   describe '商品の出品登録' do
