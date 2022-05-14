@@ -25,8 +25,8 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.post_code = '123-4560'
         expect(@order_address).to be_valid
       end
-      it '都道府県が「---」以外かつ空でなければ保存できる' do
-        @order_address.prefecture_id = 1
+      it '都道府県が空でなければ保存できる' do
+        @order_address.prefecture_id = 2
         expect(@order_address).to be_valid
       end
       it '市区町村が空でなければ保存できる' do
@@ -69,7 +69,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
       it '都道府県が「---」だと保存できないこと' do
-        @order_address.prefecture_id = 0
+        @order_address.prefecture_id = 1
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
       end

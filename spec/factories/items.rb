@@ -8,7 +8,7 @@ FactoryBot.define do
     condition_id { '6' }
     shipping_cost_id { '7' }
     prefecture_id { '8' }
-    shipping_days_id { '8' }
+    shipping_days_id { '9' }
     price { Faker::Number.between(from: 300, to: 9_999_999) }
 
     after(:build) do |item|
